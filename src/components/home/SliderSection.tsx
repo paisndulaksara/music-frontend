@@ -5,11 +5,10 @@ import Slider from "react-slick";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 
-function NextArrow(props: any) {
-  const { onClick } = props;
+function NextArrow(props: { onClick?: () => void }) {
   return (
     <div
-      onClick={onClick}
+      onClick={props.onClick}
       className="absolute bottom-4 right-8 z-10 cursor-pointer bg-white/20 text-white px-3 py-1 rounded-md"
     >
       ►
@@ -17,11 +16,10 @@ function NextArrow(props: any) {
   );
 }
 
-function PrevArrow(props: any) {
-  const { onClick } = props;
+function PrevArrow(props: { onClick?: () => void }) {
   return (
     <div
-      onClick={onClick}
+      onClick={props.onClick}
       className="absolute bottom-4 right-20 z-10 cursor-pointer bg-white/20 text-white px-3 py-1 rounded-md"
     >
       ◄
@@ -84,7 +82,6 @@ export default function SliderSection() {
             <div key={index}>
               <div className="bg-black text-white flex flex-row items-center w-full">
                 {/* Text Section */}
-                {/* Text Section */}
                 <div className="w-1/2 px-4">
                   <AnimatePresence mode="wait">
                     {isActive && (
@@ -105,7 +102,7 @@ export default function SliderSection() {
                         <p className="text-base leading-relaxed mb-6 whitespace-pre-line">
                           {slide.paragraph}
                         </p>
-                        <button className="text-f42e55 font-semibold mt-2">
+                        <button className="text-[#f42e55] font-semibold mt-2">
                           {slide.buttonText}
                         </button>
                       </motion.div>

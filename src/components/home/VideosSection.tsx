@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-
+import Image from "next/image";
 const videos = [
   {
     id: 1,
@@ -126,10 +126,13 @@ export default function VideosSection() {
               />
             ) : (
               <div className="group relative cursor-pointer">
-                <img
+                <Image
                   src={video.thumbnail}
                   alt={video.title}
+                  width={640} // set fixed width
+                  height={360} // set fixed height
                   className="w-full h-64 object-cover transition duration-300"
+                  priority
                 />
                 <div
                   onClick={() => {
@@ -142,8 +145,8 @@ export default function VideosSection() {
                 >
                   <div
                     className={`w-14 h-14 rounded-full border-[3px] border-white ${
-                        clicked === video.id ? "animate-ping-once" : ""
-                      }`}
+                      clicked === video.id ? "animate-ping-once" : ""
+                    }`}
                   />
                   <div className="absolute z-10">
                     <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">

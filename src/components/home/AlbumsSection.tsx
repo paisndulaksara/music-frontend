@@ -4,8 +4,9 @@ import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow } from "swiper/modules";
 import { FaPlay, FaPause, FaExternalLinkAlt } from "react-icons/fa";
+import Image from "next/image";
 import "swiper/css";
-import "swiper/css/effect-coverflow"; 
+import "swiper/css/effect-coverflow";
 
 const albums = [
   {
@@ -83,19 +84,22 @@ export default function AlbumsSlider() {
           <SwiperSlide
             key={index}
             className={`relative group w-[300px] h-[400px] overflow-hidden transition-all duration-300 ${
-              index === activeIndex ? 'z-20' : 'z-10'
+              index === activeIndex ? "z-20" : "z-10"
             }`}
           >
             <div
               className={`relative w-full h-full transition-transform duration-500 rounded-lg overflow-hidden ${
-                index === activeIndex ? 'group-hover:-rotate-x-12' : ''
+                index === activeIndex ? "group-hover:-rotate-x-12" : ""
               }`}
-              style={{ transformStyle: 'preserve-3d' }}
+              style={{ transformStyle: "preserve-3d" }}
             >
-              <img
+              <Image
                 src={album.image}
                 alt={album.title}
-                className="w-full h-full object-cover rounded-lg"
+                width={640} // set fixed width
+                height={360} // set fixed height
+                className="w-full h-64 object-cover transition duration-300"
+                priority
               />
             </div>
 
